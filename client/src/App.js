@@ -45,7 +45,6 @@ const App = () => {
 		ctx.canvas.height = height;
 		const image = new Image();
 		image.src = imgData;
-		console.log('fdsa', image.src);
 		image.onload = () => {
 			console.log('drawing');
 			ctx.filter = 'invert(1)';
@@ -53,27 +52,10 @@ const App = () => {
 		};
 	};
 
-	// const sendVid = e => {
-	// 	e.preventDefault();
-	// 	const data = new FormData();
-	// 	data.append('file', file);
-	// 	console.log('fdsa', file);
-	// 	axios.post(`${endpoint}/upload`, data).then(res => {
-	// 		console.log(res.data);
-	// 		setImgs(res.data.imgData);
-	// 		res.data.imgData.forEach((img, index) => {
-	// 			addImage(img, res.data.width, res.data.height, index);
-	// 		});
-	// 	});
-	// };
-
 	const handleSetImgs = res => {
 		setImgs(res.data.imgData);
 		setImgHeight(res.data.height);
 		setImgWidth(res.data.width);
-		res.data.imgData.forEach((img, index) => {
-			// addImage(img, res.data.width, res.data.height, index);
-		});
 	};
 
 	return (
@@ -81,22 +63,6 @@ const App = () => {
 			<div className='App'>
 				<Landing></Landing>
 				<Upload setImgs={handleSetImgs} />
-				{/* {imgs.map(img => (
-					<canvas className='canvas'> </canvas>
-				))} */}
-				{/* <form action='#'>
-					<label htmlFor='title'>Title</label>
-					<input
-						type='file'
-						id='file'
-						name='file'
-						onChange={e => {
-							setFile(e.target.files[0]);
-						}}
-					/>
-					<button onClick={sendVid}>Send</button>
-
-				</form> */}
 				<PictureView
 					imgs={imgs}
 					width={imgWidth}

@@ -46,5 +46,4 @@ function start() {
 		data: toPixels(toDenormalized(gradientMagnitude.data)),
 		threshold: gradientMagnitude.threshold,
 	});
-	return 'fdsa';
 }
